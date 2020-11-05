@@ -75,23 +75,37 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	}
 
 	@Transactional
-	public void deleteEntrepriseById(int entrepriseId) {
+	public Boolean deleteEntrepriseById(int entrepriseId) {
 		l.info("In deleteEntrepriseById() : ");
-		entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());	
+		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
+		if(entrepriseManagedEntity!=null) {
+			
+
+			entrepriseRepoistory.delete(entrepriseManagedEntity);
+			
+		}
 		l.info("Out deleteEntrepriseById() without errors.");
+		return true;
 	}
 
 	@Transactional
-	public void deleteDepartementById(int depId) {
+	public Boolean deleteDepartementById(int depId) {
 		l.info("In deleteEntrepriseById() : ");
-		deptRepoistory.delete(deptRepoistory.findById(depId).get());	
+		Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
+if(depManagedEntity!=null) {
+			
+
+			deptRepoistory.delete(depManagedEntity);
+			
+		}
 		l.info("Out deleteDepartementById() without errors.");
+		return true;
 	}
 
 
 	public Entreprise getEntrepriseById(int entrepriseId) {
 		l.info("In getEntrepriseById() : ");
-		Entreprise x =  entrepriseRepoistory.findById(entrepriseId).orElse(null);
+		Entreprise x = entrepriseRepoistory.findById(entrepriseId).orElse(null);
 		l.info("Out getEntrepriseById() without errors.");
 		return x;
 		
