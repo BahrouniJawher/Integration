@@ -100,8 +100,9 @@ public class EmployeServiceImpl implements IEmployeService {
 		Employe employeManagedEntity = employeRepository.findById(employeId).orElse(null);
 		if(contratManagedEntity!=null && employeManagedEntity!=null) {
 			contratManagedEntity.setEmploye(employeManagedEntity);
+			contratRepoistory.save(contratManagedEntity);
 		}
-		contratRepoistory.save(contratManagedEntity);
+		
 
 	}
 
@@ -183,7 +184,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	@Override
 	public int ajouterEmploye(Employe employe) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
