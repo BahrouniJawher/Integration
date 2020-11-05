@@ -46,7 +46,7 @@ public class IControllerEmployeImpl {
 	private String password;
 	private Employe employe;
 	private Boolean loggedIn;
-	private Employe authenticatedUser = null;;
+	private Employe authenticatedUser = null;
 
 	public Role[] getRoles() {
 		return Role.values();

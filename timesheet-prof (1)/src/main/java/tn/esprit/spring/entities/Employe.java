@@ -66,9 +66,6 @@ public class Employe implements Serializable {
 	@OneToMany(mappedBy = "employe")
 	private List<Timesheet> timesheets;
 
-	public Employe(String nom2, String prenom2, String email2, String password2, boolean actif2, Role role2) {
-		super();
-	}
 
 	public Employe() {
 		super();

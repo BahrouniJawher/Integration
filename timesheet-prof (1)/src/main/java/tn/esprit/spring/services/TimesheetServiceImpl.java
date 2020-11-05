@@ -70,7 +70,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 
 	
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
-		System.out.println("In valider Timesheet");
+
 		Employe validateur = employeRepository.findById(validateurId).orElse(null);
 		Mission mission = missionRepository.findById(missionId).orElse(null);
 		boolean chefDeLaMission = false;
@@ -97,9 +97,7 @@ public class TimesheetServiceImpl implements ITimesheetService {
 		Timesheet timesheet =timesheetRepository.findBytimesheetPK(timesheetPK);
 		timesheet.setValide(true);
 		
-		//Comment Lire une date de la base de données
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println("dateDebut : " + dateFormat.format(timesheet.getTimesheetPK().getDateDebut()));
+		
 		
 	}
 
