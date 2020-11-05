@@ -46,7 +46,7 @@ public class IControllerEmployeImpl {
 	private String password;
 	private Employe employe;
 	private Boolean loggedIn;
-	private Employe authenticatedUser;
+	private Employe authenticatedUser = null;;
 
 	public Role[] getRoles() {
 		return Role.values();
@@ -69,7 +69,7 @@ public class IControllerEmployeImpl {
 
 	public String doLogin() {
 		String navigateTo = "null";
-		Employe authenticatedUser = iemployeservice.authenticate(login, password);
+	   authenticatedUser = iemployeservice.authenticate(login, password);
 		if (authenticatedUser != null && authenticatedUser.getRole() == Role.ADMINISTRATEUR) {
 			navigateTo = "welcome.xhtml?faces-redirect=true";
 			loggedIn = true;
@@ -250,12 +250,12 @@ public class IControllerEmployeImpl {
 	}
 
 	public float getSalaireByEmployeIdJPQL(int employeId) {
-		// TODO Auto-generated method stub
+		
 		return iemployeservice.getSalaireByEmployeIdJPQL(employeId);
 	}
 
 	public Double getSalaireMoyenByDepartementId(int departementId) {
-		// TODO Auto-generated method stub
+		
 		return iemployeservice.getSalaireMoyenByDepartementId(departementId);
 	}
 
