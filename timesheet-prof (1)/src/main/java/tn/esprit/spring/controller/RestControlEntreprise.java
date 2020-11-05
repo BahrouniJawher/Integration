@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.spring.dto.DepartementDTO;
-import tn.esprit.spring.dto.EntrepriseDTO;
+
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
-import tn.esprit.spring.mapper.TimesheetMapper;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetService;
@@ -31,18 +29,16 @@ public class RestControlEntreprise {
 	IEntrepriseService ientrepriseservice;
 	@Autowired
 	ITimesheetService itimesheetservice;
-	@Autowired
-	TimesheetMapper tm1;
+	
 	
 	// Ajouter Entreprise : http://localhost:8081/SpringMVC/servlet/ajouterEntreprise
 	//{"id":1,"name":"SSII Consulting","raisonSocial":"Cite El Ghazela"}
 
 	@PostMapping("/ajouterEntreprise")
 	@ResponseBody
-	public int ajouterEntreprise(@RequestBody EntrepriseDTO ssiiConsulting) {
-		Entreprise e = tm1.mapEntrepriseDtoToEntreprise(ssiiConsulting);
-		ientrepriseservice.ajouterEntreprise(e);
-		return e.getId();
+	public int ajouterEntreprise(@RequestBody Entreprise ssiiConsulting) {
+		ientrepriseservice.ajouterEntreprise(ssiiConsulting);
+		return ssiiConsulting.getId();
 	}
 	
 	// http://localhost:8081/SpringMVC/servlet/affecterDepartementAEntreprise/1/1
@@ -72,9 +68,8 @@ public class RestControlEntreprise {
 
  	@PostMapping("/ajouterDepartement")
  	@ResponseBody
- 	public Departement ajouterDepartement(@RequestBody DepartementDTO dep) {
- 		Departement d = tm1.mapDepartementDtoToDepartement(dep);
-		return ientrepriseservice.ajouterDepartement(d);
+ 	public Departement ajouterDepartement(@RequestBody Departement dep) {
+		return ientrepriseservice.ajouterDepartement(dep);
 	}
 	
  	 // http://localhost:8081/SpringMVC/servlet/getAllDepartementsNamesByEntreprise/1
