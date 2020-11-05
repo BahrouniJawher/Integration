@@ -29,7 +29,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	private static final Logger l = LogManager.getLogger(EntrepriseServiceImpl.class);
 	
 	public Entreprise ajouterEntreprise(Entreprise entreprise) {
-		l.info("In  ajouterEntreprise : " + entreprise);
+		l.info("In  ajouterEntreprise : " );
 		entrepriseRepoistory.save(entreprise);
 		l.info("Out ajouterEntreprise() without errors.");
 		return entreprise;
