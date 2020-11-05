@@ -54,11 +54,11 @@ public class EntrepriseServiceImplTest {
 		assertEquals(5, entrepriseservice.getAllDepartementsNamesByEntreprise(1).size());
 	}
 	
-//	@Test
-//	public void testdeleteEntrepriseById() {
-//		
-//		assertTrue(entrepriseservice.deleteEntrepriseById(2));
-//	}
+	@Test
+	public void testdeleteEntrepriseById() {
+		
+		//assertTrue(entrepriseservice.deleteEntrepriseById(2));
+	}
 	
 	
 	
